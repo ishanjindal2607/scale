@@ -2,7 +2,7 @@ import sys
 import csv
 import os
 print(sys.argv[1])
-with open(sys.argv[1], mode = 'r') as file:
+with open(sys.argv[1] + "/mobilenet_detail.csv", mode = 'r') as file:
 	reader = csv.DictReader(file)
 	print("conv layer    dram_ifmap   dram_ofmap   dram_filter    sram_read    sram_write")
 	for row in reader:
