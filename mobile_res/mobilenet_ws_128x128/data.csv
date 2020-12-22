@@ -1,7 +1,0 @@
-name,energy
-MAC,1
-dram_ifmap,1
-dram_ofmap,1
-dram_filter,1
-sram_read,1
-sram_write,1
