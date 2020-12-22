@@ -9,6 +9,7 @@ with open("data.csv") as file:
 		energy[row['name']] = int(row['energy'])
 print(energy)
 cycle_counts = {}
+total = 0
 with open(sys.argv[1] + "/mobilenet_detail.csv", mode = 'r') as file:
 	reader = csv.DictReader(file)
 	for row in reader:
@@ -17,4 +18,6 @@ with open(sys.argv[1] + "/mobilenet_cycles.csv", mode = 'r') as file:
 	reader = csv.DictReader(file)
 	for row in reader:
 		cycle_counts[row['Layer']] = cycle_counts[row['Layer']]  + energy['MAC'] * int(row["MACs"])
+		total = total + cycle_counts[row['Layer']]
 print(cycle_counts)
+print(total)
