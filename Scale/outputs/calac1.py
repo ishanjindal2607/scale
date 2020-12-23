@@ -36,3 +36,13 @@ list1.append(final)
 with open(sys.argv[1] +  "/energy_results.json", 'w') as f:
 	json.dump(list1, f)
 print(total)
+data_file = open(sys.argv[1] + 'energy_results.csv', 'w')  
+csv_writer = csv.writer(data_file) 
+count = 0
+for emp in list1: 
+	if count == 0:  
+		header = emp.keys() 
+		csv_writer.writerow(header) 
+		count += 1
+	csv_writer.writerow(emp.values())
+data_file.close()
