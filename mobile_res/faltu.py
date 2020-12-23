@@ -24,11 +24,14 @@ with open(sys.argv[1] + "/mobilenet_detail.csv", mode = 'r') as file1, open(sys.
 		layer["dram_filter"] = energy['dram_filter'] * int(row["\tDRAM_Filter_bytes"])
 		layer["sram_read"] =  energy['sram_read'] * int(row["\tSRAM_read_bytes"])
 		layer["sram_write"] = energy['sram_write'] * int(row["\tSRAM_write_bytes"])
-		#layer["MACs"] =       energy['MAC'] * int(row1["MACs"])
-		layer_total = energy['dram_ifmap'] * int(row["\tDRAM_IFMAP_bytes"]) + energy['dram_ofmap'] * int(row["\tDRAM_OFMAP_bytes"]) + energy['dram_filter'] * int(row["\tDRAM_Filter_bytes"]) + energy['sram_read'] * int(row["\tSRAM_read_bytes"]) + energy['sram_write'] * int(row["\tSRAM_write_bytes"]) #+ energy['MAC'] * int(row1["MACs"])
+		layer["MACs"] =       energy['MAC'] * int(row1["MACs"])
+		layer_total = energy['dram_ifmap'] * int(row["\tDRAM_IFMAP_bytes"]) + energy['dram_ofmap'] * int(row["\tDRAM_OFMAP_bytes"]) + energy['dram_filter'] * int(row["\tDRAM_Filter_bytes"]) + energy['sram_read'] * int(row["\tSRAM_read_bytes"]) + energy['sram_write'] * int(row["\tSRAM_write_bytes"]) + energy['MAC'] * int(row1["MACs"])
 		layer["total"] = layer_total
 		total = total  + layer_total
 		list1.append(layer)
+final = {}
+final["final_total"] = total
+list1.append(final)
 with open(sys.argv[1] +  "/energy_results.json", 'w') as f:
 	json.dump(list1, f)
 print(total)
