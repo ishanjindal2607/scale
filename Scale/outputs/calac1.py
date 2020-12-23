@@ -31,7 +31,14 @@ with open(sys.argv[1] + "/mobilenet_detail.csv", mode = 'r') as file1, open(sys.
 		total = total  + layer_total
 		list1.append(layer)
 final = {}
-final["final_total"] = total
+final["name"] =  "final"
+final["dram_ifmap"] = 0
+final["dram_ofmap"] = 0
+final["dram_filter"] = 0
+final["sram_read"] =  0
+final["sram_write"] = 0
+final["MACs"] =  0
+final["total"] = total
 list1.append(final)
 with open(sys.argv[1] +  "/energy_results.json", 'w') as f:
 	json.dump(list1, f)
