@@ -1,7 +1,7 @@
 name,energy
 MAC,1
-dram_ifmap,1
-dram_ofmap,1
-dram_filter,1
-sram_read,1
-sram_write,1
+dram_ifmap,200
+dram_ofmap,50
+dram_filter,100
+sram_read,2
+sram_write,2

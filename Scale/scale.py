@@ -8,7 +8,7 @@ from absl import app
 FLAGS = flags.FLAGS
 #name of flag | default | explanation
 flags.DEFINE_string("arch_config","./configs/scale.cfg","file where we are getting our architechture from")
-flags.DEFINE_string("network","./topologies/conv_nets/mobile.csv","topology that we are reading")
+flags.DEFINE_string("network","./topologies/conv_nets/mobilenet.csv","topology that we are reading")
 
 
 class scale:
@@ -176,9 +176,9 @@ class scale:
         all_arr_dim_list = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384]
         all_sram_sz_list = [256, 512, 1024]
 
-        data_flow_list = all_data_flow_list[1:]
-        arr_h_list = all_arr_dim_list[3:8]
-        arr_w_list = all_arr_dim_list[3:8]
+        data_flow_list = all_data_flow_list[0:]
+        arr_h_list = all_arr_dim_list[7:8]
+        arr_w_list = all_arr_dim_list[7:8]
         #arr_w_list = list(reversed(arr_h_list))
 
         net_name = self.topology_file.split('/')[-1].split('.')[0]
@@ -194,7 +194,7 @@ class scale:
                 self.run_once()
 
 def main(argv):
-    s = scale(save = False, sweep = False)
+    s = scale(save = False, sweep = True)
     s.run_scale()
 
 if __name__ == '__main__':
