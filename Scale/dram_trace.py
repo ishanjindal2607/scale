@@ -39,7 +39,6 @@ def dram_trace_read_v2(
         elems = [float(x) for x in elems]
 
         clk = elems[0]
-
         for e in range(1, len(elems)):
 
             if (elems[e] not in sram) and (elems[e] >= min_addr) and (elems[e] < max_addr):
